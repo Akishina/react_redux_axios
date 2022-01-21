@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../../app/services/auth";
+import { logout } from "../auth/authSlice";
 
 const initialState = {
   currentUser: null,
@@ -8,24 +9,17 @@ const initialState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.currentUser = null;
-      state.errorMessage = "";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addMatcher(
-      authApi.endpoints.login.matchFulfilled,
-      (state, action) => {
+    builder
+      .addCase(logout.type, (state) => {
+        state.currentUser = null;
+      })
+      .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
         state.currentUser = action.payload.user;
-      }
-    );
+      });
   },
 });
-
-// Export actions
-export const { logout } = userSlice.actions;
 
 // Select state currentUser from slice
 export const selectUser = (state) => state.user.currentUser;
