@@ -1,9 +1,9 @@
-import { Login } from "../features/auth/Login";
+import LoginCard from "../features/auth/LoginCard";
 
 export default function LoginPage() {
   return (
     <div>
-      <Login />
+      <LoginCard />
     </div>
   );
 }
