@@ -1,4 +1,5 @@
 import Logout from "../features/auth/Logout";
+import PostsList from "../features/post/PostsList";
 import UserInfo from "../features/user/UserInfo";
 
 export default function HomePage() {
@@ -6,12 +7,13 @@ export default function HomePage() {
     <div>
       <h1>This is HomePage</h1>
 
-      <UserInfo />
+      {/* <UserInfo /> */}
+      <PostsList />
 
       <br />
       <br />
 
-      <Logout />
+      {/* <Logout /> */}
     </div>
   );
 }
